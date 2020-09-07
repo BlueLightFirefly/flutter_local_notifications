@@ -1,3 +1,28 @@
+# [1.4.4+4]
+
+* [Android] Fix issue [759](https://github.com/MaikuB/flutter_local_notifications/issues/759) by guarding code on getting the intent from the activity in case there isn't an activity that could cause `initialize()` and `getNotificationAppLaunchDetails()` to fail when called from the background
+
+# [1.4.4+3]
+
+* [Android] Fix issue [751](https://github.com/MaikuB/flutter_local_notifications/issues/751) where the `onSelectNotification` callback could be called again after the user has tapped on a notification, sent the application to the background and returned to the app via the Recents screen. This issue could have previously called `getNotificationAppLaunchDetails()` to mistakenly report that a notification launched the app when it's called again as part of the application being resumed
+
+# [1.4.4+2]
+
+* [Android] Updated readme and plugin to fix issue [689](https://github.com/MaikuB/flutter_local_notifications/issues/689) where plugin needs to ensure notifications stay scheduled after an application update
+* Removed `e2e` dependency
+
+# [1.4.4+1]
+
+* Added details that platform-specific implementations can be obtained to the _Caveats and limitations_ section
+* Added a note on restrictions imposed by the OS by Android OEMs that may be prevent scheduled notifications appearing
+* _Release configurations_ section of the readme renamed to _Release build configuration_
+
+# [1.4.4]
+
+* [iOS] Fixes to ensure that the native completion handlers were called appropriately. If you had some issues using this plugin combined with push notifications (e.g. via `firebase_messaging`) when the app was in the foreground then I would recommend updating to this version. Thanks to [Paweł Szot](https://github.com/szotp) for picking up the gap in the code in handling the native `willPresentNotification` call
+* The readme has been been touched up and had some sections rearranged. Thanks to the PR from [psyanite](https://github.com/psyanite)
+* Bumped lower bound of Dart SDK dependency to 2.0
+
 # [1.4.3]
 
 * [Android] added the ability to specify additional flags for the notification. For example, this could be used to allow the audio to repeat. See the API docs and update example app for more details. Thanks to the PR from [andylei](https://github.com/andylei)
